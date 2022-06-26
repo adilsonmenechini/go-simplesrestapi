@@ -51,15 +51,6 @@ func TestUserUseCase_FindEmail(t *testing.T) {
 	fmt.Println(result)
 }
 
-func TestUserUseCase_AuthM(t *testing.T) {
-	db := db.ConnectMySQL()
-	repo := repository.UserNewRepo(db)
-	serv := usecase.UserNewService(repo)
-	result, _ := serv.Auth("EvhgYPB@aASeEVl.ru", "123456asddfg")
-
-	fmt.Println(result)
-}
-
 func TestUserUseCase_CreateP(t *testing.T) {
 	var user entity.User
 	user.Name = faker.Name()
@@ -84,18 +75,5 @@ func TestUserUseCase_FindEmailP(t *testing.T) {
 		log.Println("Error")
 		return
 	}
-	fmt.Println(result)
-}
-
-func TestUserUseCase_AuthP(t *testing.T) {
-	db := db.ConnectPSQL()
-	repo := repository.UserNewRepo(db)
-	serv := usecase.UserNewService(repo)
-	result, err := serv.Auth("adilsonpostman06@gmail.com", "adilson1234567@AS")
-	if err != nil {
-		fmt.Println("Auth error: ", err)
-		return
-	}
-
 	fmt.Println(result)
 }
